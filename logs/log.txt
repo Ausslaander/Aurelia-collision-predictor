@@ -1,0 +1,3 @@
+Connecting to satellite at https://celestrak.org/NORAD/elements/gp.php...
+Connected to https://celestrak.org/NORAD/elements/gp.php. Status code: 200
+Satellite data saved to C:\Users\tema1\Desktop\Bureau\Aurelia-collision-predictor\data\satellites_data\20251010_184557.csv
