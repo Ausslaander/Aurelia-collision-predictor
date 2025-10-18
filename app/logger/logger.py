@@ -8,6 +8,7 @@ class Logger:
         if not self.log_file.exists():
             self.log_file.touch()
 
+    #TODO добавить необязательный параметр для логгера (для определения потока вывода сообщений)
     def write(self, data: str):
         with self.log_file.open('a', encoding='utf-8') as f:
             f.write(data + '\n')
