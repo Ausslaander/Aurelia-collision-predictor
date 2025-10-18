@@ -3,11 +3,11 @@ from datetime import datetime
 import requests
 import aiohttp
 
-from config.config import DATA_PATH, BASE_SATELLITE_DATA_URL
+from config.config import BASE_SATELLITE_DATA_URL
 
 
 class SatelliteAccessor(BaseAccessor):
-    def __init__(self, url: str = None, format: str = 'csv', group: str = None):
+    def __init__(self, url: str = BASE_SATELLITE_DATA_URL, format: str = 'csv', group: str = None):
         super().__init__()
         self.url = url
         self.format = format
@@ -30,21 +30,9 @@ class SatelliteAccessor(BaseAccessor):
         if status is not None:
             self.logger.write(f"Connected to {self.url}. Status code: {status}")
             if status == 200:
-                current_time = datetime.now().strftime('%Y%m%d_%H%M%S')
                 resp = requests.get(f"{BASE_SATELLITE_DATA_URL}?GROUP={self.group}&FORMAT={self.format}")
                 resp.raise_for_status()
-                satellites_dir = DATA_PATH / 'satellites_data'
-                satellites_dir.mkdir(parents=True, exist_ok=True)
-                file_path = satellites_dir / f"{current_time}.csv"
-                with file_path.open('w', encoding='utf-8') as f:
-                    f.write(resp.text)
-                self.logger.write(f"Satellite data saved to {file_path}")
+                self.logger.write("Got response")
+                return resp.text
+        return None
 
-
-if __name__ == "__main__":
-    accessor = SatelliteAccessor(
-        url=BASE_SATELLITE_DATA_URL,
-        group='starlink'
-    )
-    import asyncio
-    asyncio.run(accessor.connect())

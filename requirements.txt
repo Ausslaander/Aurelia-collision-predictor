@@ -1,2 +1,3 @@
 requests
 aiohttp
+PyQt6
