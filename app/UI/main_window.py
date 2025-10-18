@@ -47,6 +47,7 @@ class MainWindow(QMainWindow):
         #TODO: подключить обработчики событий
         self.import_button.clicked.connect(self.on_import_clicked)
 
+    # TODO: пока плейсхолдер 3D окна визуализации
     def create_visual_tab(self):
         tab = QWidget()
         layout = QVBoxLayout(tab)
