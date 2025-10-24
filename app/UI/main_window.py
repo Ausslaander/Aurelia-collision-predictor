@@ -1,10 +1,10 @@
 from PyQt6.QtWidgets import (
-    QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout,
+    QMainWindow, QWidget, QVBoxLayout, QHBoxLayout,
     QPushButton, QTabWidget, QLabel, QFrame, QMessageBox
 )
 from PyQt6.QtCore import Qt
-from app.UI.event_handler import handle_import
-
+from app.application.import_handler import ImportHandler
+from qasync import asyncSlot
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -46,6 +46,7 @@ class MainWindow(QMainWindow):
         #TODO: подключить обработчики событий
         self.import_button.clicked.connect(self.on_import_clicked)
 
+    # TODO: эти отдельные вкладки надо будет реализовать в виде отдельных модулей с подключением в этот, основной
     # TODO: пока плейсхолдер 3D окна визуализации
     def create_visual_tab(self):
         tab = QWidget()
@@ -57,7 +58,6 @@ class MainWindow(QMainWindow):
         globe_label = QLabel("3D Earth Placeholder", alignment=Qt.AlignmentFlag.AlignCenter)
         globe_label.setStyleSheet("color: white; font-size: 16px;")
 
-        # Центрируем контент
         frame_layout = QVBoxLayout(globe_placeholder)
         frame_layout.addWidget(globe_label, alignment=Qt.AlignmentFlag.AlignCenter)
 
@@ -72,6 +72,8 @@ class MainWindow(QMainWindow):
         layout.addWidget(label)
         return tab
 
-    def on_import_clicked(self):
-        message = handle_import()
-        QMessageBox.information(self, "Import", message)
+    @asyncSlot()
+    async def on_import_clicked(self):
+        handler = ImportHandler()
+        result = await handler.handle()
+        QMessageBox.information(self, "Import", result["message"])
