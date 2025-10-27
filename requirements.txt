@@ -1,2 +1,5 @@
 requests
 aiohttp
+PyQt6
+asyncio
+qasync
