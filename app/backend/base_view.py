@@ -1,6 +1,6 @@
-from app.logger.logger import Logger
+from app.logger.logger import logger
 
 class View:
     def __init__(self):
-        self.logger = Logger()
+        self.logger = logger
     pass #TODO потом реализуем

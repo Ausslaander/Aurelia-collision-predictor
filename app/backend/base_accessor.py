@@ -1,8 +1,8 @@
-from app.logger.logger import Logger
+from app.logger.logger import logger
 
 class BaseAccessor:
     def __init__(self):
-        self.logger = Logger()
+        self.logger = logger
 
     async def connect(self, app):
         pass
