@@ -1,0 +1,6 @@
+[2026-04-06 01:49:25] __main__.main: Application started
+[2026-04-06 01:49:26] app.application.import_handler.ImportHandler.handle: Starting import process
+[2026-04-06 01:49:26] app.backend.accessors.SatelliteAccessor.connect: Connecting to satellite at https://celestrak.org/NORAD/elements/gp.php
+[2026-04-06 01:49:27] app.backend.accessors.SatelliteAccessor.connect: Failed to fetch satellite data. Status: 403, params: {'GROUP': 'starlink', 'FORMAT': 'csv'}
+[2026-04-06 01:49:27] app.backend.views.SatelliteDataView.get_data: Satellite data import failed: empty response
+[2026-04-06 01:49:27] app.application.import_handler.ImportHandler.handle: Finished import process with status: error

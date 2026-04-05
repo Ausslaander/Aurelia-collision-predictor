@@ -4,38 +4,43 @@ from app.backend.accessors import SatelliteAccessor
 from datetime import datetime
 import numpy as np
 
+
 class SatelliteDataView(View):
     def __init__(self):
         super().__init__()
         self.accessor = SatelliteAccessor()
 
-    async def get_data(self, group: str = None):
-        #TODO в group тем или иным образом должна поступать информация с UI
+    async def get_data(self, group: str = None) -> dict:
+        # TODO в group тем или иным образом должна поступать информация с UI
         self.accessor.group = group
         data = await self.accessor.connect()
-        self.save_data(data)
+        if not data:
+            self.logger.write("Satellite data import failed: empty response")
+            return {"status": "error", "message": "Import failed: data source returned no data"}
 
+        file_path = self.save_data(data)
+        return {"status": "ok", "message": f"Import completed: {file_path.name}"}
 
-    def save_data(self, data):
-        current_time = datetime.now().strftime('%Y%m%d_%H%M%S')
-        satellites_dir = DATA_PATH / 'satellites_data'
+    def save_data(self, data: str):
+        current_time = datetime.now().strftime("%Y%m%d_%H%M%S")
+        satellites_dir = DATA_PATH / "satellites_data"
         satellites_dir.mkdir(parents=True, exist_ok=True)
         file_path = satellites_dir / f"{current_time}.csv"
-        with file_path.open('w', encoding='utf-8') as f:
+        with file_path.open("w", encoding="utf-8") as f:
             f.write(data)
         self.logger.write(f"Satellite data saved to {file_path}")
+        return file_path
 
 
 class CollisionPredictionView(View):
     def __init__(self):
         super().__init__()
-        self.accessor = None #TODO Потом тут будет матмодуль
+        self.accessor = None  # TODO Потом тут будет матмодуль
         self.covariance_matrix = np.zeros((3, 3))
         self.constaint_level = 0
 
     def predict_collisions(self):
         pass
-    #TODO Надо будет реализовать окно с выбором файла данных для анализа
-    #TODO Также надо реализовать окно с заполнением данных матрицы и константы уровня для характеристики эллипса
-
+    # TODO Надо будет реализовать окно с выбором файла данных для анализа
+    # TODO Также надо реализовать окно с заполнением данных матрицы и константы уровня для характеристики эллипса
 
