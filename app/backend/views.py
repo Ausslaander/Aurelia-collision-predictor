@@ -2,6 +2,7 @@ from app.backend.base_view import View
 from config.config import DATA_PATH
 from app.backend.accessors import SatelliteAccessor
 from datetime import datetime
+import numpy as np
 
 class SatelliteDataView(View):
     def __init__(self):
@@ -23,5 +24,18 @@ class SatelliteDataView(View):
         with file_path.open('w', encoding='utf-8') as f:
             f.write(data)
         self.logger.write(f"Satellite data saved to {file_path}")
+
+
+class CollisionPredictionView(View):
+    def __init__(self):
+        super().__init__()
+        self.accessor = None #TODO Потом тут будет матмодуль
+        self.covariance_matrix = np.zeros((3, 3))
+        self.constaint_level = 0
+
+    def predict_collisions(self):
+        pass
+    #TODO Надо будет реализовать окно с выбором файла данных для анализа
+    #TODO Также надо реализовать окно с заполнением данных матрицы и константы уровня для характеристики эллипса
 
 
