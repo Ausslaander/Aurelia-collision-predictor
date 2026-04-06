@@ -1,0 +1,2 @@
+[2026-04-06 02:29:32] __main__.InternalDataAccessor.get_satellite_data: Fetching data from C:\Users\Auslander\Desktop\Progs\Aurelia-collision-predictor\data\satellites_data
+[2026-04-06 02:29:32] __main__.InternalDataAccessor.get_latest_file_path: Fetching latest file from C:\Users\Auslander\Desktop\Progs\Aurelia-collision-predictor\data\satellites_data

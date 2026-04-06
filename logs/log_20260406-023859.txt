@@ -1,0 +1,5 @@
+[2026-04-06 02:38:59] __main__.InternalDataAccessor.get_satellite_data: Fetching data from C:\Users\Auslander\Desktop\Progs\Aurelia-collision-predictor\data\satellites_data
+[2026-04-06 02:38:59] __main__.InternalDataAccessor.get_latest_file_path: Fetching latest file from C:\Users\Auslander\Desktop\Progs\Aurelia-collision-predictor\data\satellites_data
+[2026-04-06 02:38:59] __main__.InternalDataAccessor.get_latest_file_path: Found 10 files in C:\Users\Auslander\Desktop\Progs\Aurelia-collision-predictor\data\satellites_data
+[2026-04-06 02:38:59] __main__.InternalDataAccessor.get_satellite_data: Latest file path: C:\Users\Auslander\Desktop\Progs\Aurelia-collision-predictor\data\satellites_data\20260406_015332.csv
+[2026-04-06 02:38:59] __main__.InternalDataAccessor.get_satellite_data: Read data from C:\Users\Auslander\Desktop\Progs\Aurelia-collision-predictor\data\satellites_data\20260406_015332.csv

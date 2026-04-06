@@ -1,0 +1,6 @@
+[2026-04-06 02:45:57] __main__.main: Application started
+[2026-04-06 02:45:58] app.application.import_handler.ImportHandler.handle: Starting import process
+[2026-04-06 02:45:58] app.backend.accessors.SatelliteAccessor.connect: Connecting to satellite at https://celestrak.org/NORAD/Elements/table.php
+[2026-04-06 02:46:11] app.backend.accessors.SatelliteAccessor.connect: Got response
+[2026-04-06 02:46:11] app.backend.views.SatelliteDataView.save_data: Satellite data saved to C:\Users\Auslander\Desktop\Progs\Aurelia-collision-predictor\data\satellites_data\20260406_024611.csv
+[2026-04-06 02:46:11] app.application.import_handler.ImportHandler.handle: Finished import process with status: ok

@@ -10,6 +10,6 @@ class ImportHandler(BaseHandler):
 
     async def handle(self):
         self.logger.write("Starting import process")
-        result = await self.view.get_data(group="starlink")  # TODO пока по дефолту импортируется starlink, надо будет потом добавить выбор из UI
+        result = await self.view.get_data(group="STARLINK")  # TODO пока по дефолту импортируется starlink, надо будет потом добавить выбор из UI
         self.logger.write(f"Finished import process with status: {result.get('status')}")
         return result
